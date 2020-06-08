@@ -1,4 +1,4 @@
-package `in`.blogspot.kmvignesh.calculator
+package com.example.My_calculator
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
