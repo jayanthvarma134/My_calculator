@@ -1,6 +1,6 @@
 # My_calculator
 A simple calculator app using android studio.
-Since, I had to uninstall the android sdk as it was eating up on all the memory and also took up a large amount of storage I do not have the output image.  
+It's got some bugs though, working on fixing them.  
 It works though  
 But I can still share the design.
 
