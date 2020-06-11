@@ -4,4 +4,4 @@ Since, I had to uninstall the android sdk as it was eating up on all the memory 
 It works though  
 But I can still share the design.
 
-![Image alt text](https://github.com/jayanthvarma134/My_calculator/blob/master/app/src/main/res/drawable/my_calculator.png)
+![Image alt text](https://github.com/jayanthvarma134/My_calculator/blob/master/my_calculator.png)
