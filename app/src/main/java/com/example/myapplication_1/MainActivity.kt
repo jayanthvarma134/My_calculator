@@ -1,37 +1,35 @@
-package com.example.My_calculator
+package com.example.calculator
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
-import net.objecthunter.exp4j.ExpressionBuilder
+import java.lang.Exception
 
 class MainActivity : AppCompatActivity() {
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
         //Numbers
-        tvOne.setOnClickListener { appendOnExpresstion("1", true) }
-        tvTwo.setOnClickListener { appendOnExpresstion("2", true) }
-        tvThree.setOnClickListener { appendOnExpresstion("3", true) }
-        tvFour.setOnClickListener { appendOnExpresstion("4", true) }
-        tvFive.setOnClickListener { appendOnExpresstion("5", true) }
-        tvSix.setOnClickListener { appendOnExpresstion("6", true) }
-        tvSeven.setOnClickListener { appendOnExpresstion("7", true) }
-        tvEight.setOnClickListener { appendOnExpresstion("8", true) }
-        tvNine.setOnClickListener { appendOnExpresstion("9", true) }
-        tvZero.setOnClickListener { appendOnExpresstion("0", true) }
-        tvDot.setOnClickListener { appendOnExpresstion(".", true) }
+        tvOne.setOnClickListener { display("1", true) }
+        tvTwo.setOnClickListener { display("2", true) }
+        tvThree.setOnClickListener {display("3", true) }
+        tvFour.setOnClickListener { display("4", true) }
+        tvFive.setOnClickListener { display("5", true) }
+        tvSix.setOnClickListener { display("6", true) }
+        tvSeven.setOnClickListener { display("7", true) }
+        tvEight.setOnClickListener { display("8", true) }
+        tvNine.setOnClickListener { display("9", true) }
+        tvZero.setOnClickListener { display("0", true) }
+        tvDot.setOnClickListener { display(".", true) }
 
         //Operators
-        tvPlus.setOnClickListener { appendOnExpresstion("+", false) }
-        tvMinus.setOnClickListener { appendOnExpresstion("-", false) }
-        tvMul.setOnClickListener { appendOnExpresstion("*", false) }
-        tvDivide.setOnClickListener { appendOnExpresstion("/", false) }
-        tvOpen.setOnClickListener { appendOnExpresstion("(", false) }
-        tvClose.setOnClickListener { appendOnExpresstion(")", false) }
+        tvPlus.setOnClickListener { display("+", false) }
+        tvMinus.setOnClickListener { display("-", false) }
+        tvMul.setOnClickListener { display("*", false) }
+        tvDivide.setOnClickListener { display("/", false) }
+        //tvOpen.setOnClickListener { display("(", false) }
+        //tvClose.setOnClickListener { display(")", false) }
 
         tvClear.setOnClickListener {
             tvExpression.text = ""
@@ -47,24 +45,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         tvEquals.setOnClickListener {
-            try {
-
+            try{
                 val expression = ExpressionBuilder(tvExpression.text.toString()).build()
                 val result = expression.evaluate()
-                val longResult = result.toLong()
-                if(result == longResult.toDouble())
-                    tvResult.text = longResult.toString()
-                else
-                    tvResult.text = result.toString()
-
-            }catch (e:Exception){
-                Log.d("Exception"," message : " + e.message )
+            }catch(e:Exception){
+                Log.d(tag = "Exception" , msg =  "messsage" , e.message)
             }
+
         }
 
     }
 
-    fun appendOnExpresstion(string: String, canClear: Boolean) {
+
+    fun display (string: String, canClear: Boolean) {
 
         if(tvResult.text.isNotEmpty()){
             tvExpression.text = ""
@@ -77,6 +70,7 @@ class MainActivity : AppCompatActivity() {
             tvExpression.append(tvResult.text)
             tvExpression.append(string)
             tvResult.text = ""
+
         }
     }
 }
